@@ -3,7 +3,9 @@
 
 #ifndef NPC_HPP
 #define NPC_HPP
-
+#include <iostream>
+#include <string> // for string class
+using namespace std;
 #include <map>
 #include <vector>
 
@@ -244,6 +246,27 @@ extern struct eri *npc_sc_display_ers;
 
 #define START_NPC_NUM 110000000
 
+std::string commash(std:string digits) {
+	std::string result;
+	if (digits.length() > 3) {
+		int t = 0;
+
+		for (int i = digits.lenght() - 1; i >= 0; i--) {
+			result = digits[i] + result;
+			t++;
+			if (t % 3 == 0) {
+				result = ',' + result;
+			}
+		}
+		if (result[0] == ',') {
+			result.erase(0, 1);
+		}
+	}
+	else {
+		result = digits;
+	}
+	return result;
+}
 enum e_job_types
 {
 	NPC_RANGE1_START = 44,
